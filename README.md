@@ -87,7 +87,7 @@ void note(unsigned char scale,unsigned char length,unsigned char octave)
 この引数については入れた数値とそのままオクターブが対応しています。  
 (5オクターブ目なら5,6オクターブ目なら6)  
   
-範囲は4オクターブ～7オクターブです。  
+範囲は3オクターブ～7オクターブです。  
 
 ## 例
 5オクターブ目の「ド」の音の4分音符は
