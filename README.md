@@ -107,5 +107,4 @@ note(15,28,6);
 void rest(unsigned char length)
 ```
 この関数の引数lengthは音符のフォーマットのlengthと共通の書き方です。詳しくはそちらを御覧ください。
-# 簡単な原理
-執筆中  
+
