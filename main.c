@@ -394,7 +394,7 @@ void haruwa_pastel(void){
     note(0,8,6);note(6,8,5);                                                                        //たく
     note(5,8,5);note(5,8,5);note(5,8,5);note(5,8,5);note(6,8,5);note(5,8,5);note(4,8,5);note(3,8,5);//さんのしろいはな
     note(4,18,5);note(4,16,5);note(14,8,5);note(5,8,5);note(6,8,5);note(0,4,6);note(4,8,5);         //きいろいはな　し
-    note(5,8,5);note(5,8,5);note(5,8,5);note(5,8,5);note(5,8,5);note(6,8,5);note(6,8,5);note(5,8,5);//がつをうめつくし
+    note(5,8,5);note(5,8,5);note(5,8,5);note(5,8,5);note(5,8,5);note(5,8,5);note(6,8,5);note(5,8,5);//がつをうめつくし
     note(4,2,5);rest(4);                                                                            //て
     
     note(2,8,5);note(3,8,5);                                                                        //のは
