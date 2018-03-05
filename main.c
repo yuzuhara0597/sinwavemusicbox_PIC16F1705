@@ -1,3 +1,7 @@
+// PIC16F1705 Configuration Bit Settings
+
+// 'C' source line config statements
+
 // CONFIG1
 #pragma config FOSC = INTOSC    // Oscillator Selection Bits (INTOSC oscillator: I/O function on CLKIN pin)
 #pragma config WDTE = OFF       // Watchdog Timer Enable (WDT disabled)
