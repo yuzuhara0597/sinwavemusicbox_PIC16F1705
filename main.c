@@ -333,12 +333,20 @@ void rest(unsigned char length){
             rest_length = tmr4time + tmr4time_dot;
             break;
             
+        case 216:
+            rest_length = tmr43time;
+            break;
+            
         case 8:
             rest_length = tmr4time * 2;
             break;
             
         case 18:
             rest_length = tmr4time * 3;
+            break;
+            
+        case 28:
+            rest_length = tmr43time * 2;
             break;
             
         case 4:
@@ -349,12 +357,20 @@ void rest(unsigned char length){
             rest_length = tmr4time * 6;
             break;
             
+        case 24:
+            rest_length = tmr43time * 4;
+            break;
+            
         case 2:
             rest_length = tmr4time * 8;
             break;
             
         case 12:
             rest_length = tmr4time * 12;
+            break;
+            
+        case 22:
+            rest_length = tmr43time * 8;
             break;
             
         case 1:
