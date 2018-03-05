@@ -29,10 +29,10 @@
 #define _16NOTE_DOT 1500
 #define _16NOTE_TRIPLET 2000
 
-unsigned char pr2value=0;                           //PR2‚Ì’l‚Ìƒoƒbƒtƒ@BŠ„‚è‚İ‚ÌPR2‚Ì‘ã“ü‚É—p‚¢‚é
-unsigned char phase = 0;                            //ˆÊ‘Š‚ğ‚¸‚ç‚·‚½‚ß‚Ì•Ï”BŒ¸Š‚É—p‚¢‚é
-int tmr4time,tmr43time,tmr4time_dot,tmr4flag=0;     //timer4ŠÖ˜A‚Ì•Ï”Btimer4‚Í‰¹•„‚Ì’·‚³‚ğ‘ª‚éB
-unsigned char tmr2flag = 0,tmr1flag = 0;            //timer1,2‚Ìƒtƒ‰ƒO
+unsigned char pr2value=0;                           //PR2ã®å€¤ã®ãƒãƒƒãƒ•ã‚¡ã€‚å‰²ã‚Šè¾¼ã¿æ™‚ã®PR2ã®ä»£å…¥æ™‚ã«ç”¨ã„ã‚‹
+unsigned char phase = 0;                            //ä½ç›¸ã‚’ãšã‚‰ã™ãŸã‚ã®å¤‰æ•°ã€‚æ¸›è¡°ã«ç”¨ã„ã‚‹
+int tmr4time,tmr43time,tmr4time_dot,tmr4flag=0;     //timer4é–¢é€£ã®å¤‰æ•°ã€‚timer4ã¯éŸ³ç¬¦ã®é•·ã•ã‚’æ¸¬ã‚‹ã€‚
+unsigned char tmr2flag = 0,tmr1flag = 0;            //timer1,2ã®ãƒ•ãƒ©ã‚°
 
 unsigned char sinwave96_envelope[144]={
     64,68,72,76,80,84,88,92,96,99,102,106,109,111,114,116,
@@ -73,14 +73,14 @@ void interrupt isr(void){
 }
 
 void main(void){
-    OSCCON = 0b01110000;    //“à•”ƒNƒƒbƒN@32MHz
+    OSCCON = 0b01110000;    //å†…éƒ¨ã‚¯ãƒ­ãƒƒã‚¯ã€€32MHz
     ANSELA = ANSELC = 0;
     TRISA = 0;
     TRISC = 0;
     
     DAC1CON0 = 0b10000000;  
     DAC1CON1 = 0;
-    OPA1CON = 0b11010010;   //ƒIƒyƒAƒ“ƒv‚Íƒoƒbƒtƒ@o—ÍADAC‚©‚ç“ü—Í
+    OPA1CON = 0b11010010;   //ã‚ªãƒšã‚¢ãƒ³ãƒ—ã¯ãƒãƒƒãƒ•ã‚¡å‡ºåŠ›ã€DACã‹ã‚‰å…¥åŠ›
     
     T1CON = 0x21;       
     TMR1H = 0x3C;
@@ -101,11 +101,11 @@ void main(void){
 }
 
 /*
- * ‰¹‚ğo—Í‚·‚éŠÖ”
- * scale:C=0,D=1...B=6,æ“ª‚É1‚ª•t‚­1ˆÈŠO‚Ì”’l‚Í#‚ğ•\‚·
- * length:4•ª‰¹•„=4,8•ª‰¹•„=8...A‘S‰¹•„`16•ª‰¹•„‚Ü‚ÅA
- *        æ“ª‚É1‚ª‚Â‚­1ˆÈŠO‚Ì”’l‚Í•t“_‚ğA2‚¾‚Æ3˜A•„‚ğ•\‚·
- * octave:5ƒIƒNƒ^[ƒu=5,6ƒIƒNƒ^[ƒu=6...A3`6
+ * éŸ³ã‚’å‡ºåŠ›ã™ã‚‹é–¢æ•°
+ * scale:C=0,D=1...B=6,å…ˆé ­ã«1ãŒä»˜ã1ä»¥å¤–ã®æ•°å€¤ã¯#ã‚’è¡¨ã™
+ * length:4åˆ†éŸ³ç¬¦=4,8åˆ†éŸ³ç¬¦=8...ã€å…¨éŸ³ç¬¦ï½16åˆ†éŸ³ç¬¦ã¾ã§ã€
+ *        å…ˆé ­ã«1ãŒã¤ã1ä»¥å¤–ã®æ•°å€¤ã¯ä»˜ç‚¹ã‚’ã€2ã ã¨3é€£ç¬¦ã‚’è¡¨ã™
+ * octave:5ã‚ªã‚¯ã‚¿ãƒ¼ãƒ–=5,6ã‚ªã‚¯ã‚¿ãƒ¼ãƒ–=6...ã€3ï½7
  */
 void note(unsigned char scale,unsigned char length,unsigned char octave){
     int note_length;
@@ -300,7 +300,7 @@ void note(unsigned char scale,unsigned char length,unsigned char octave){
             }
         }
             
-        //50ms‚²‚Æ‚ÉˆÊ‘Š‚ğ‚¸‚ç‚µ‚ÄŒ¸Š‚³‚¹‚é        
+        //50msã”ã¨ã«ä½ç›¸ã‚’ãšã‚‰ã—ã¦æ¸›è¡°ã•ã›ã‚‹        
         if(tmr1flag >= 1){
             if(phase == 48){
                 TMR1IE = 0;
@@ -319,7 +319,7 @@ void note(unsigned char scale,unsigned char length,unsigned char octave){
 }
 
 void rest(unsigned char length){
-    int rest_length;    //Šî–{“I‚Èl‚¦•û‚Ínote_length‚Æ“¯‚¶Bæ“ª‚É1‚ª•t‚­1ˆÈŠO‚Ì”’l‚Í•t“_x•ª‰¹•„,æ“ª2‚¾‚Æ3˜A•„
+    int rest_length;    //åŸºæœ¬çš„ãªè€ƒãˆæ–¹ã¯note_lengthã¨åŒã˜ã€‚å…ˆé ­ã«1ãŒä»˜ã1ä»¥å¤–ã®æ•°å€¤ã¯ä»˜ç‚¹xåˆ†éŸ³ç¬¦,å…ˆé ­2ã ã¨3é€£ç¬¦
     switch(length){
         case 16:
             rest_length = tmr4time;
@@ -370,35 +370,35 @@ void rest(unsigned char length){
 }
 
 void tempo(float tempo){
-    tmr4time = (int)(_16NOTE/tempo);            //16•ª‰¹•„‚Ìtimer4‚ÌŠ„‚è‚İ‰ñ”(tmr4A1‰ñ5ms)
-    tmr43time = (int)(_16NOTE_TRIPLET/tempo);   //3˜A16•ª‰¹•„‚Ìtimer4‚ÌŠ„‚è‚İ‰ñ”
-    tmr4time_dot = (int)(_16NOTE_DOT/tempo);    //32•ª‰¹•„A16•ª‰¹•„‚Ì•t“_—p
+    tmr4time = (int)(_16NOTE/tempo);            //16åˆ†éŸ³ç¬¦ã®timer4ã®å‰²ã‚Šè¾¼ã¿å›æ•°(tmr4ã€1å›ï¼5ms)
+    tmr43time = (int)(_16NOTE_TRIPLET/tempo);   //3é€£16åˆ†éŸ³ç¬¦ã®timer4ã®å‰²ã‚Šè¾¼ã¿å›æ•°
+    tmr4time_dot = (int)(_16NOTE_DOT/tempo);    //32åˆ†éŸ³ç¬¦ã€16åˆ†éŸ³ç¬¦ã®ä»˜ç‚¹ç”¨
 }
 
 
-/*ƒfƒ‚‹ÈFt‚ÍƒpƒXƒeƒ‹*/
+/*ãƒ‡ãƒ¢æ›²ï¼šæ˜¥ã¯ãƒ‘ã‚¹ãƒ†ãƒ«*/
 void haruwa_pastel(void){
     tempo(120);
     
-    note(2,8,5);note(3,8,5);                                                                        //‚Ì‚Í
-    note(4,4,5);note(2,4,5);note(3,4,5);note(2,8,5);note(1,8,5);                                    //‚ç‚Ì‚Í‚È‚Í
-    note(0,8,5);note(0,4,5);note(2,8,5);note(4,4,5);note(4,8,5);note(4,8,5);                        //‚ ‚©‚é‚¢@‚Ù‚Ù
-    note(5,4,5);note(3,4,5);note(4,8,5);note(4,8,5);note(3,8,5);note(2,8,5);                        //‚¦‚İ‚ ‚Â‚ß‚Ä
-    note(3,8,5);note(3,4,5);note(2,8,5);note(1,4,5);                                                //‚Ğ‚©‚é‚æ
-    note(2,8,5);note(3,8,5);                                                                        //‚Í‚é
-    note(4,4,5);note(2,4,5);note(3,8,5);note(3,8,5);note(2,8,5);note(1,8,5);                        //‚Ì‚ ‚½‚½‚©‚¢
-    note(0,14,5);note(2,8,5);note(4,4,5);note(0,8,6);note(6,8,5);                                   //‚©‚º‚ª@‚â‚³
-    note(5,4,5);note(0,4,6);note(4,8,5);note(4,8,5);note(0,8,6);note(0,8,6);                        //‚µ‚­‚¦‚ª‚¨‚ğ
-    note(6,8,5);note(0,4,6);note(1,8,6);note(0,4,6);                                                //‚ä‚ç‚·‚æ
+    note(2,8,5);note(3,8,5);                                                                        //ã®ã¯
+    note(4,4,5);note(2,4,5);note(3,4,5);note(2,8,5);note(1,8,5);                                    //ã‚‰ã®ã¯ãªã¯
+    note(0,8,5);note(0,4,5);note(2,8,5);note(4,4,5);note(4,8,5);note(4,8,5);                        //ã‚ã‹ã‚‹ã„ã€€ã»ã»
+    note(5,4,5);note(3,4,5);note(4,8,5);note(4,8,5);note(3,8,5);note(2,8,5);                        //ãˆã¿ã‚ã¤ã‚ã¦
+    note(3,8,5);note(3,4,5);note(2,8,5);note(1,4,5);                                                //ã²ã‹ã‚‹ã‚ˆ
+    note(2,8,5);note(3,8,5);                                                                        //ã¯ã‚‹
+    note(4,4,5);note(2,4,5);note(3,8,5);note(3,8,5);note(2,8,5);note(1,8,5);                        //ã®ã‚ãŸãŸã‹ã„
+    note(0,14,5);note(2,8,5);note(4,4,5);note(0,8,6);note(6,8,5);                                   //ã‹ãœãŒã€€ã‚„ã•
+    note(5,4,5);note(0,4,6);note(4,8,5);note(4,8,5);note(0,8,6);note(0,8,6);                        //ã—ããˆãŒãŠã‚’
+    note(6,8,5);note(0,4,6);note(1,8,6);note(0,4,6);                                                //ã‚†ã‚‰ã™ã‚ˆ
     
-    note(0,8,6);note(6,8,5);                                                                        //‚½‚­
-    note(5,8,5);note(5,8,5);note(5,8,5);note(5,8,5);note(6,8,5);note(5,8,5);note(4,8,5);note(3,8,5);//‚³‚ñ‚Ì‚µ‚ë‚¢‚Í‚È
-    note(4,18,5);note(4,16,5);note(14,8,5);note(5,8,5);note(6,8,5);note(0,4,6);note(4,8,5);         //‚«‚¢‚ë‚¢‚Í‚È@‚µ
-    note(5,8,5);note(5,8,5);note(5,8,5);note(5,8,5);note(5,8,5);note(6,8,5);note(6,8,5);note(5,8,5);//‚ª‚Â‚ğ‚¤‚ß‚Â‚­‚µ
-    note(4,2,5);rest(4);                                                                            //‚Ä
+    note(0,8,6);note(6,8,5);                                                                        //ãŸã
+    note(5,8,5);note(5,8,5);note(5,8,5);note(5,8,5);note(6,8,5);note(5,8,5);note(4,8,5);note(3,8,5);//ã•ã‚“ã®ã—ã‚ã„ã¯ãª
+    note(4,18,5);note(4,16,5);note(14,8,5);note(5,8,5);note(6,8,5);note(0,4,6);note(4,8,5);         //ãã„ã‚ã„ã¯ãªã€€ã—
+    note(5,8,5);note(5,8,5);note(5,8,5);note(5,8,5);note(5,8,5);note(6,8,5);note(6,8,5);note(5,8,5);//ãŒã¤ã‚’ã†ã‚ã¤ãã—
+    note(4,2,5);rest(4);                                                                            //ã¦
     
-    note(2,8,5);note(3,8,5);                                                                        //‚Ì‚Í
-    note(4,4,5);note(0,4,6);note(6,8,5);note(6,4,5);note(0,8,6);                                    //‚ç‚ª@‚ ‚í‚­
-    note(6,8,5);note(0,8,6);note(1,8,6);note(1,8,6);note(0,4,6);note(4,8,5);note(4,8,5);            //‚¢‚ë‚Ã‚­‚æ@‚Í‚é
-    note(5,4,5);note(0,4,6);note(6,14,5);note(6,8,5);note(0,2,6);rest(4);                           //‚ÍƒpƒXƒeƒ‹
+    note(2,8,5);note(3,8,5);                                                                        //ã®ã¯
+    note(4,4,5);note(0,4,6);note(6,8,5);note(6,4,5);note(0,8,6);                                    //ã‚‰ãŒã€€ã‚ã‚ã
+    note(6,8,5);note(0,8,6);note(1,8,6);note(1,8,6);note(0,4,6);note(4,8,5);note(4,8,5);            //ã„ã‚ã¥ãã‚ˆã€€ã¯ã‚‹
+    note(5,4,5);note(0,4,6);note(6,14,5);note(6,8,5);note(0,2,6);rest(4);                           //ã¯ãƒ‘ã‚¹ãƒ†ãƒ«
 }
