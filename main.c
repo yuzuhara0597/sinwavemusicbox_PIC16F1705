@@ -99,7 +99,7 @@ void main(void){
     tempo(120);
     
     while(1){
-        haruwa_pastel();
+        haruwa_pastel();    //デモ曲
     }
     
 }
