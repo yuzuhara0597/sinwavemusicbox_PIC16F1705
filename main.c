@@ -57,7 +57,7 @@ void rest(unsigned char length);
 
 void haruwa_pastel(void);
 
-void interrupt isr(void){
+void __interrupt() isr(void){
     if(TMR2IF == 1){
         PR2 = pr2value;
         TMR2IF = 0;
