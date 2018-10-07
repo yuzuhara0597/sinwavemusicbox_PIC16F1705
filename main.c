@@ -55,7 +55,7 @@ void tempo(float tempo);
 void note(unsigned char scale,unsigned char length,unsigned char octave);
 void rest(unsigned char length);
 
-void haruwa_pastel(void);
+void ichodori(void);
 
 void __interrupt() isr(void){
     if(TMR2IF == 1){
@@ -99,7 +99,7 @@ void main(void){
     tempo(120);
     
     while(1){
-        haruwa_pastel();    //デモ曲
+        ichodori();    //デモ曲
     }
     
 }
@@ -396,29 +396,29 @@ void tempo(float tempo){
 }
 
 
-/*デモ曲：春はパステル*/
-void haruwa_pastel(void){
+/*デモ曲：いちょう通り*/
+void ichodori(void){
     tempo(120);
     
-    note(2,8,5);note(3,8,5);                                                                        //のは
-    note(4,4,5);note(2,4,5);note(3,4,5);note(2,8,5);note(1,8,5);                                    //らのはなは
-    note(0,8,5);note(0,4,5);note(2,8,5);note(4,4,5);note(4,8,5);note(4,8,5);                        //あかるい　ほほ
-    note(5,4,5);note(3,4,5);note(4,8,5);note(4,8,5);note(3,8,5);note(2,8,5);                        //えみあつめて
-    note(3,8,5);note(3,4,5);note(2,8,5);note(1,4,5);                                                //ひかるよ
-    note(2,8,5);note(3,8,5);                                                                        //はる
-    note(4,4,5);note(2,4,5);note(3,8,5);note(3,8,5);note(2,8,5);note(1,8,5);                        //のあたたかい
-    note(0,14,5);note(2,8,5);note(4,4,5);note(0,8,6);note(6,8,5);                                   //かぜが　やさ
-    note(5,4,5);note(0,4,6);note(4,8,5);note(4,8,5);note(0,8,6);note(0,8,6);                        //しくえがおを
-    note(6,8,5);note(0,4,6);note(1,8,6);note(0,4,6);                                                //ゆらすよ
+    note(0,8,5);note(1,8,5);                                                                                //あき
+    note(2,4,5);note(2,8,5);note(3,8,5);note(4,4,5);note(5,8,5);note(6,8,5);                                //の　そらはたか
+    note(0,18,6);note(0,16,6);note(3,8,5);note(5,8,5);note(4,4,5);note(2,8,5);note(0,8,5);                  //くそびえていちょ
+    note(5,18,5);note(5,16,5);note(3,8,5);note(5,8,5);note(4,4,5);note(3,8,5);note(2,8,5);                  //うなみきが　そら　
+    note(1,8,5);note(0,8,5);note(5,8,4);note(2,8,5);note(1,4,5);                                            //につらなる
+    note(0,8,5);note(1,8,5);                                                                                //いっ
+    note(2,4,5);note(2,8,5);note(3,8,5);note(4,4,5);note(5,8,5);note(6,8,5);                                //ぽんみちは　きい
+    note(0,18,6);note(0,16,6);note(3,8,5);note(5,8,5);note(4,4,5);note(2,8,5);note(0,8,5);                  //ろくそまり　ただ
+    note(5,18,5);note(5,16,5);note(6,8,5);note(0,8,6);note(4,8,5);note(0,8,6);note(6,8,5);note(0,8,6);      //あきのおとずれを
+    note(3,8,5);note(2,8,5);note(1,8,5);note(1,8,5);note(0,4,5);                                            //おしえてる
     
-    note(0,8,6);note(6,8,5);                                                                        //たく
-    note(5,8,5);note(5,8,5);note(5,8,5);note(5,8,5);note(6,8,5);note(5,8,5);note(4,8,5);note(3,8,5);//さんのしろいはな
-    note(4,18,5);note(4,16,5);note(14,8,5);note(5,8,5);note(6,8,5);note(0,4,6);note(4,8,5);         //きいろいはな　し
-    note(5,4,5);note(5,8,5);note(5,8,5);note(5,8,5);note(6,8,5);note(0,8,6);note(2,8,6);            //がつをうめつく
-    note(1,2,6);rest(4);                                                                            //す
-    
-    note(2,8,5);note(3,8,5);                                                                        //のは
-    note(4,4,5);note(0,4,6);note(6,8,5);note(6,4,5);note(0,8,6);                                    //らが　あわく
-    note(6,8,5);note(0,8,6);note(1,8,6);note(1,8,6);note(0,4,6);note(4,8,5);note(4,8,5);            //いろづくよ　はる
-    note(5,4,5);note(0,4,6);note(6,14,5);note(6,8,5);note(0,2,6);rest(4);                           //はパステル
+    note(0,8,5);note(1,8,5);                                                                                //いちょ
+    note(2,4,5);note(2,8,5);note(3,8,5);note(4,4,5);note(5,8,5);note(6,8,5);                                //う　いちょう　ふゆ
+    note(0,18,6);note(0,16,6);note(3,8,5);note(5,8,5);note(4,4,5);note(2,8,5);note(0,8,5);                  //の　はじまり　きい
+    note(5,18,5);note(5,16,5);note(3,8,5);note(5,8,5);note(4,4,5);note(3,8,5);note(2,8,5);                  //ろくあおく　そら
+    note(1,8,5);note(0,8,5);note(5,8,4);note(2,8,5);note(1,4,5);                                            //にのばして
+    note(0,8,5);note(1,8,5);                                                                                //いちょ
+    note(2,4,5);note(2,8,5);note(3,8,5);note(4,4,5);note(5,8,5);note(6,8,5);                                //う　いちょう　ふゆ
+    note(0,4,6);note(3,8,5);note(5,8,5);note(4,4,5);note(2,8,5);note(0,8,5);                                //を　こえて　また
+    note(5,18,5);note(5,16,5);note(6,8,5);note(0,8,6);note(4,8,5);note(0,8,6);note(6,8,5);note(0,8,6);      //らいねんげんきに
+    note(3,8,5);note(2,8,5);note(1,4,5);note(0,4,5);                                                        //めをだせ
 }
