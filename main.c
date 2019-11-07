@@ -408,7 +408,7 @@ void ichodori(void){
     note(0,8,5);note(1,8,5);                                                                                //いっ
     note(2,4,5);note(2,8,5);note(3,8,5);note(4,4,5);note(5,8,5);note(6,8,5);                                //ぽんみちは　きい
     note(0,18,6);note(0,16,6);note(3,8,5);note(5,8,5);note(4,4,5);note(2,8,5);note(0,8,5);                  //ろくそまり　ただ
-    note(5,18,5);note(5,16,5);note(6,8,5);note(0,8,6);note(4,8,5);note(0,8,6);note(6,8,5);note(0,8,6);      //あきのおとずれを
+    note(5,18,5);note(5,16,5);note(6,8,5);note(0,8,6);note(4,8,5);note(0,8,6);note(6,8,5);note(0,8,6);      //ふゆのおとずれを
     note(3,8,5);note(2,8,5);note(1,8,5);note(1,8,5);note(0,4,5);                                            //おしえてる
     
     note(0,8,5);note(1,8,5);                                                                                //いちょ
