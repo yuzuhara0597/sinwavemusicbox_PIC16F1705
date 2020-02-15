@@ -80,9 +80,6 @@ void note(unsigned char scale,unsigned char length,unsigned char octave)
 | 2分 | 2 |
 | 付点2分 | 12 |  
 | 3連2分 | 22 |
-| 16分 | 16 |
-| 付点16分 | 116 |  
-| 3連16分 | 216 |  
 | 全音符 | 1 |   
   
   
